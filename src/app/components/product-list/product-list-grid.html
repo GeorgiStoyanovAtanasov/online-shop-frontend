@@ -1,0 +1,74 @@
+<div class="main-content">
+    <div class="section-content section content-p30">
+        <div class="container-fluid">
+            <div class="row">
+
+                <!-- loop over the collection of products -->
+                <div *ngFor="let tempProduct of products" class="col-md-3">
+
+                    <div class="product-box">
+                        
+                        <a routerLink="/products/{{ tempProduct.id }}">
+                            <img src="{{ tempProduct.imageUrl}}" class="img-responsive">
+                        </a>
+
+                        <a routerLink="/products/{{ tempProduct.id }}">
+                            <h1>{{ tempProduct.name }}</h1>
+                        </a>
+
+                        <div class="price">{{ tempProduct.unitPrice | currency:'USD' }} </div>
+                        <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">Add to cart</button>
+                    </div>
+
+                </div>
+
+                <!-- if products empty then display a message to user -->
+                <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
+                    No products found.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav *ngIf="totalElements > pageSize">
+  <ul class="pagination justify-content-center">
+
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <a class="page-link" (click)="onPageChange(currentPage - 1)">Previous</a>
+    </li>
+
+    <li 
+  class="page-item"
+  *ngFor="let page of getDisplayedPages()" 
+  [class.active]="currentPage === page"
+  [class.disabled]="page === 0"
+>
+  <a class="page-link" *ngIf="page !== 0" (click)="onPageChange(page)">{{ page }}</a>
+  <span class="page-link" *ngIf="page === 0">...</span>
+</li>
+
+
+    <li class="page-item" [class.disabled]="currentPage === getTotalPages()">
+      <a class="page-link" (click)="onPageChange(currentPage + 1)">Next</a>
+    </li>
+
+  </ul>
+</nav>
+
+<div class="container mt-4">
+  <div class="row justify-content-end">
+    <div class="col-auto d-flex align-items-center">
+      <label for="pageSize" class="me-2 fw-bold">Products per page:</label>
+      <select id="pageSize"
+        class="form-select w-auto"
+        [(ngModel)]="pageSize"
+        (ngModelChange)="changeNumberOfProducts()">
+  <option *ngFor="let size of [5, 10, 20, 50]" [ngValue]="size">{{ size }}</option>
+</select>
+
+    </div>
+  </div>
+</div>
+
+
+</div>

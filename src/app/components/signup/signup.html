@@ -1,0 +1,62 @@
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<div class="signup-page">
+  <div class="signup-card">
+    
+    <div class="logo">
+      <a routerLink="/products">
+        <img src="assets/images/logo.png" alt="luv2shop">
+      </a>
+    </div>
+
+    <h2>Sign Up</h2>
+
+    <!-- Normal signup form -->
+    <form [formGroup]="signupForm" (ngSubmit)="signup()">
+      <div class="form-group">
+        <label>Full Name:</label>
+        <input type="text" formControlName="fullName">
+        <div *ngIf="f['fullName'].invalid && (f['fullName'].dirty || f['fullName'].touched)" class="error">
+          <span *ngIf="f['fullName'].errors?.['required']">Full Name is required.</span>
+          <span *ngIf="f['fullName'].errors?.['minlength']">Full Name must be at least 2 characters.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" formControlName="email">
+        <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)" class="error">
+          <span *ngIf="f['email'].errors?.['required']">Email is required.</span>
+          <span *ngIf="f['email'].errors?.['pattern']">Invalid email format.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Password:</label>
+        <input type="password" formControlName="password">
+        <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)" class="error">
+          <span *ngIf="f['password'].errors?.['required']">Password is required.</span>
+          <span *ngIf="f['password'].errors?.['minlength']">Password must be at least 8 characters.</span>
+        </div>
+      </div>
+
+      <button type="submit" class="signup-btn" [disabled]="signupForm.invalid">Register</button>
+    </form>
+    <p></p>
+    <!-- Divider -->
+    <div class="divider"><span>OR</span></div>
+
+    <!-- Google signup button -->
+    <div id="google-signup-btn" style="margin-top: 16px; display: flex; justify-content: center;"></div>
+
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+    <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+
+    <p class="login-link">Already have an account? <a routerLink="/login">Login here</a></p>
+  </div>
+</div>

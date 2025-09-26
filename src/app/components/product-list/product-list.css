@@ -1,0 +1,4 @@
+.page-link {
+  cursor: pointer;              /* Shows pointer cursor */
+  user-select: none;            /* Prevents text selection */
+}
