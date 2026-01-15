@@ -13,7 +13,7 @@ export interface UserDTO {
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8080';
+  private apiUrl = 'https://localhost:8443';
   username$ = new BehaviorSubject<string | null>(null);
   
   constructor(private http: HttpClient) {}
@@ -24,5 +24,9 @@ export class UserService {
 
   setUsername(username: string | null) {
     this.username$.next(username);
+  }
+
+  getRoles(token: string): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/users/roles?token=${token}`);
   }
 }

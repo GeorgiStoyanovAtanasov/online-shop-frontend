@@ -12,6 +12,12 @@
     box-sizing:border-box
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body{
     font-family:Poppins,sans-serif;
     font-weight:400;
@@ -19,7 +25,10 @@ body{
     line-height:1.625;
     color:#666;
     -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale
+    -moz-osx-font-smoothing:grayscale;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 ul{
@@ -107,17 +116,23 @@ a,a:hover{
 .page-wrapper{
     overflow:hidden;
     background:#e5e5e5;
-    padding-bottom:8vh
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .page-container{
     background:#e5e5e5;
-    padding-left:200px
+    padding-left:200px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .main-content{
     padding-top:116px;
-    min-height:100vh
+    flex: 1;
 }
 
 aside.menu-sidebar.d-none.d-lg-block.clr{
@@ -763,23 +778,48 @@ a.primary-btn:hover{
  * ----------------------------
  */
 
-footer ul li a{
-    color:#fff
+/* 
+ * ----------------------------
+ * Footer section
+ * ----------------------------
+ */
+
+footer {
+    background: #232324;
+    padding: 25px; /* Increased padding */
+    text-align: center;
+    margin-top: auto;
+    position: relative;
+    z-index: 1;
 }
-footer{
-    background:#232324;
-    z-index:1;
-    position:relative;
-    text-align:center
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increased gap between items */
 }
-footer li a{
-    color:#313131;
-    font-weight:500
+
+footer li {
+    display: inline-block;
+    font-size: 18px; /* Increased from 14px to 18px */
+    padding: 12px 25px; /* Increased padding */
 }
-footer ul li{
-    display:inline-block;
-    font-size:14px;
-    padding:10px 20px
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600; /* Made font weight bolder */
+    font-size: 18px; /* Ensure anchor tags also have larger font */
+}
+
+footer a:hover {
+    color: #0da8e4;
+    text-decoration: underline;
+    transform: scale(1.05); /* Add slight scale effect on hover */
+    transition: all 0.3s ease;
 }
 
 /* 
@@ -844,15 +884,22 @@ footer ul li{
     .page-container{
         position:relative;
         top:88px;
-        padding-left:0
+        padding-left:0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     }
      .page-wrapper{
         background:#e5e5e5;
-        padding-bottom:12vh
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
     }
      .main-content{
         padding-top:50px;
-        padding-bottom:100px
+        padding-bottom:100px;
+        flex: 1;
     }
      .cart-area.d-n{
         display:none
@@ -982,7 +1029,10 @@ footer ul li{
     .page-container{
         position:relative;
         top:66px;
-        padding-left:0
+        padding-left:0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     }
     .au-btn-submit{
         position:relative;

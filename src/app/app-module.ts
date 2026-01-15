@@ -18,6 +18,8 @@ import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { Login } from './components/login/login';
 import { Signup } from './components/signup/signup';
 import { App } from './app';
+import { OrderHistory } from './components/order-history/order-history';
+import { AuthGuard } from './guard/auth-guard';
 //import { AuthGuard, AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
 //import authConfig from './config/auth-config';
 //import { AuthInterceptor } from './services/auth-interceptor';
@@ -25,7 +27,11 @@ import { App } from './app';
 //import { Signup } from './components/signup/signup'
 
 const routes: Routes = [
-  {path: 'checkout', component: Checkout},
+  { 
+    path: 'checkout', 
+    component: Checkout, 
+    canActivate: [AuthGuard] 
+  },
   {path: 'cart-details', component: CartDetails},
   {path: 'products/:id', component: ProductDetails},
   {path: 'search/:keyword', component: ProductList},
@@ -34,6 +40,11 @@ const routes: Routes = [
   {path: 'products', component: ProductList},
   { path: 'login', component: Login },
   { path: 'signup', component: Signup },
+  { 
+    path: 'orders', 
+    component: OrderHistory, 
+    canActivate: [AuthGuard] 
+  },
   {path: '', redirectTo: '/products', pathMatch: 'full'},
   {path: '**', redirectTo: '/products', pathMatch: 'full'},
 //  {path: 'signup', component: Signup },
@@ -54,7 +65,8 @@ const routes: Routes = [
     CartDetails,
     Checkout,
     Login,
-    Signup
+    Signup,
+    OrderHistory
     //LoginStatus,
 //    Signup
   ],

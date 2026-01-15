@@ -15,7 +15,7 @@ export class GoogleAuthService {
       const idToken = response.credential;
 
       this.http.post<{ accessToken: string; name: string }>(
-        `http://localhost:8080/auth/google/${mode}`,
+        `https://localhost:8443/auth/google/${mode}`,
         { token: idToken }
       ).subscribe({
         next: res => {

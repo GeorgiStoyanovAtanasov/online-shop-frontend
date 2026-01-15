@@ -14,8 +14,8 @@ export class Signup implements OnInit, AfterViewInit {
   errorMessage = '';
   successMessage = '';
 
-  private apiUrl = 'http://localhost:8080/auth/register/user';
-  private googleSignupUrl = 'http://localhost:8080/auth/google/signup';
+  private apiUrl = 'https://localhost:8443/auth/register/user';
+  private googleSignupUrl = 'https://localhost:8443/auth/google/signup';
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {}
 

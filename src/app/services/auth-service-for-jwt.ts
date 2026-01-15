@@ -14,7 +14,7 @@ interface LoginResponse {
   providedIn: 'root'
 })
 export class AuthServiceForJwt {
-  private apiUrl = 'http://localhost:8080/auth';
+  private apiUrl = 'https://localhost:8443/auth';
   private tokenKey = 'auth_token';
 
   isLoggedIn$ = new BehaviorSubject<boolean>(this.hasToken());
@@ -84,4 +84,5 @@ export class AuthServiceForJwt {
     });
   }
 }
+
 }
